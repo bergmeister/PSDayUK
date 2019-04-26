@@ -20,6 +20,19 @@ if ($a = $b) {
 # PSUseCompatibleCmdlets
 Compress-Archive
 
+# PSUseCompatibleSyntax (show fix as well)
+[System.Collections.Generic.Dictionary[string, string]]::new()
+
+# PSUseCompatibleCommands
+Get-FileHash -LiteralPath $literalPath
+Import-Module -FullyQualifiedName @{ ModuleName = ArchiveHelper; ModuleVersion = '1.1' }
+Split-Path -LeafBase $path
+Compress-Archive
+Out-File -LiteralPath $literalPath -NoNewline
+
+# PSUseCompatibleTypes
+[System.Management.Automation.SemanticVersion]"1.18.0-rc1"
+
 # PSSA Settings/VSCode integration:
 https://github.com/bergmeister/PSScriptAnalyzer-VSCodeIntegration
 
@@ -34,4 +47,4 @@ curl
 
 ###################################################################
 
-Show-Ast { if($a -eq "$b.wth()"){ }  }
+Show-Ast { if($a -eq "$b.wth()"){ } }
